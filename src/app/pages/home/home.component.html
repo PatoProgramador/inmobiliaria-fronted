@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div class="container">
+    <h1>Selecciona la ciudad</h1>
+    <div *ngFor="let ciudad of ciudadList">
+        <button type="button" class="btn btn-dark" [routerLink]="['/inmuebles', ciudad.clave]">{{ciudad.descripcion}}</button>
+    </div>
+</div>

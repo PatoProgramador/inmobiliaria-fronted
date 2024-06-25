@@ -1,1 +1,20 @@
-<p>inmuebles works!</p>
+<div class="container">
+    <h1>List of products: </h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of inmuebles">
+          <th scope="row">{{product.id}}</th>
+          <td>{{product.detalles}}</td>
+          <td>{{product.direccion}}</td>
+          <td>{{product.precio}}</td>
+        </tr>
+    </table>
+  </div>

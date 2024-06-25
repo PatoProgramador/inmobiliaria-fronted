@@ -5,7 +5,7 @@ import { InmueblesComponent } from './pages/inmuebles/inmuebles.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'inmuebles', component: InmueblesComponent},
+  {path: 'inmuebles/:ciudad', component: InmueblesComponent},
   { path: '**', redirectTo:'home', pathMatch: 'full'}
 ];
 
