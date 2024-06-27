@@ -87,6 +87,7 @@ export class RegistroPersonaComponent implements OnInit {
       next: (data:IPersona) => {
         if (data) {
           this._appService.setPersonaLog(data);
+          this._appService.login();
           alert("logiao :)")
           this.router.navigate(['home']);
         } else {

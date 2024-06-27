@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ICatalogo } from 'src/app/models/catalogo.model';
 import { IPersona } from 'src/app/models/persona.model';
+import { AppService } from 'src/app/services/app.service';
 import { CatalogService } from 'src/app/services/catalog.service';
 import { PersonaService } from 'src/app/services/persona.service';
 
@@ -21,6 +22,7 @@ export class RegistroComponent implements OnInit {
 
   constructor(private _catalogService: CatalogService,
     private _personaService: PersonaService,
+    private _appService: AppService,
     private form: FormBuilder,
     private router: Router
   ) {
@@ -51,7 +53,10 @@ export class RegistroComponent implements OnInit {
         this.persona = data? data: null;
         // logica jeje
         if (this.persona) {
+          this._appService.setPersonaLog(this.persona);
+          this._appService.login();
           alert("SI EXISTE")
+          this.router.navigate(['home']);
         } else {
           this.router.navigate(['registro-persona']);
         }

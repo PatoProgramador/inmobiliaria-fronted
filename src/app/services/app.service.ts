@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IPersona } from '../models/persona.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AppService {
+
+  private autenticado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   ciudad: string = '';
   personaLogueada?: IPersona;
@@ -26,5 +29,17 @@ export class AppService {
 
   getPersonaLog(): IPersona | undefined {
     return this.personaLogueada;
+  }
+
+  login(): void {
+    this.autenticado.next(true);
+  }
+
+  logout(): void {
+    this.autenticado.next(false);
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    return this.autenticado.asObservable();
   }
 }
