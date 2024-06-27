@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICiudad } from 'src/app/models/ciudad.model';
+import { ICatalogo } from 'src/app/models/catalogo.model';
+import { AppService } from 'src/app/services/app.service';
 import { CatalogService } from 'src/app/services/catalog.service';
 
 @Component({
@@ -9,13 +10,19 @@ import { CatalogService } from 'src/app/services/catalog.service';
 })
 export class HomeComponent implements OnInit {
 
-  ciudadList: ICiudad[] = [];
+  ciudadList: ICatalogo[] = [];
 
-  constructor(private _catalogService: CatalogService) {}
+  constructor(private _catalogService: CatalogService,
+    private _appService: AppService
+  ) {}
 
   ngOnInit(): void {
-    this._catalogService.traerTodasLasCiudades().subscribe((data:ICiudad[]) => {
+    this._catalogService.traerTodasLasCiudades().subscribe((data:ICatalogo[]) => {
       this.ciudadList = data;
     })
+  }
+
+  setearCiudad(ciudad:string):void {
+    this._appService.setCiudad(ciudad);
   }
 }

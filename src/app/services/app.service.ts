@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IPersona } from '../models/persona.model';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,8 @@ import { Injectable } from '@angular/core';
 
 export class AppService {
 
-  ciudad: string = 'BOG';
+  ciudad: string = '';
+  personaLogueada?: IPersona;
 
   constructor() { }
 
@@ -16,5 +18,13 @@ export class AppService {
 
   getCiudad(): string {
     return this.ciudad;
+  }
+
+  setPersonaLog(persona: IPersona): void {
+    this.personaLogueada = persona;
+  }
+
+  getPersonaLog(): IPersona | undefined {
+    return this.personaLogueada;
   }
 }

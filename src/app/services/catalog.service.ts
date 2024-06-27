@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICiudad } from '../models/ciudad.model';
+import { ICatalogo } from '../models/catalogo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,15 @@ export class CatalogService {
 
   constructor(private _httpClient: HttpClient) {}
 
-  public traerTodasLasCiudades(): Observable<ICiudad[]> {
-    return this._httpClient.get<ICiudad[]>(`${this.baseURL}/ciudad/listar`);
+  public traerTodasLasCiudades(): Observable<ICatalogo[]> {
+    return this._httpClient.get<ICatalogo[]>(`${this.baseURL}/ciudad/listar`);
+  }
+
+  public traerTodosLosTiposDeDocumento(): Observable<ICatalogo[]> {
+    return this._httpClient.get<ICatalogo[]>(`${this.baseURL}/tipoIdenficacion/listar`);
+  }
+
+  public traerTodoslosTiposPersona(): Observable<ICatalogo[]> {
+    return this._httpClient.get<ICatalogo[]>(`${this.baseURL}/tipoPersona/listar`);
   }
 }

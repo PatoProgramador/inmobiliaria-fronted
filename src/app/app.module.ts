@@ -7,18 +7,24 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InmueblesComponent } from './pages/inmuebles/inmuebles.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistroComponent } from './pages/registro/registro.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegistroPersonaComponent } from './pages/registro-persona/registro-persona.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    InmueblesComponent
+    InmueblesComponent,
+    RegistroComponent,
+    RegistroPersonaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

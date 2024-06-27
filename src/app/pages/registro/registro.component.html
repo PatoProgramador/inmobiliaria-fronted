@@ -1,0 +1,10 @@
+<div class="input-group flex-nowrap">
+    <form [formGroup]="formularioLogin" (ngSubmit)="enviar()">
+        <select class="form-select" formControlName="tipoDocumento">
+            <option *ngFor="let td of tiposDocumento" [value]="td.id">{{td.descripcion}}</option>
+        </select>
+        <span class="input-group-text">documento</span>
+        <input type="text" class="form-control" placeholder="0000000000" formControlName="documento">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
