@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistroPersonaComponent } from './pages/registro-persona/registro-persona.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PersonaFormComponent } from './components/persona-form/persona-form.component';
+import { InmueblesCardComponent } from './components/inmuebles-card/inmuebles-card.component';
+import { PersonaInmuebleComponent } from './pages/persona-inmueble/persona-inmueble.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import { PersonaFormComponent } from './components/persona-form/persona-form.com
     RegistroComponent,
     RegistroPersonaComponent,
     PerfilComponent,
-    PersonaFormComponent
-  ],
+    PersonaFormComponent,
+    InmueblesCardComponent,
+    PersonaInmuebleComponent
+  ], 
   imports: [
     BrowserModule,
     AppRoutingModule,

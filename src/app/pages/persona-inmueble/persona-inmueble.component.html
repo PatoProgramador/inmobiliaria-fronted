@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>Tus inmuebles</h1>
+    <div *ngFor="let producto of personasInmueble">
+      <div class="card" style="width: 18rem">
+        <app-inmuebles-card [product]="producto"></app-inmuebles-card>
+      </div>
+    </div>
+</div>

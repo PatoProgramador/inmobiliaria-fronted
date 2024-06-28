@@ -1,13 +1,8 @@
 <div class="container">
   <h1>Inmuebles</h1>
-  <div *ngFor="let product of inmuebles">
+  <div *ngFor="let producto of inmuebles">
     <div class="card" style="width: 18rem">
-      <img [src]="product.id % 2 === 0 ? imagenPar : imagenImpar" class="card-img-top" alt="{{product.id}}" />
-      <div class="card-body">
-        <h5 class="card-title">{{product.direccion}}</h5>
-        <p class="card-text">{{product.detalles}}</p>
-        <a href="#" class="btn btn-primary">Más detalles</a>
-      </div>
+      <app-inmuebles-card [product]="producto"></app-inmuebles-card>
     </div>
   </div>
 </div>

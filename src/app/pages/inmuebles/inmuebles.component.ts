@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IInmueble } from 'src/app/models/inmueble.model';
 import { AppService } from 'src/app/services/app.service';
 import { InmuebleService } from 'src/app/services/inmueble.service';

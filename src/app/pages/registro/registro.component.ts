@@ -36,7 +36,6 @@ export class RegistroComponent implements OnInit {
     this._catalogService.traerTodosLosTiposDeDocumento().subscribe({
       next: (data: ICatalogo[]) => {
         this.tiposDocumento = data;
-        console.log(this.tiposDocumento)
       }, error: (err: any) => {
         console.log(err);
         this.loading = false;

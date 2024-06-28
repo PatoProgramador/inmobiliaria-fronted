@@ -40,7 +40,6 @@ export class PerfilComponent implements OnInit{
     this._catalogService.traerTodosLosTiposDeDocumento().subscribe({
       next: (data: ICatalogo[]) => {
         this.tiposDocumento = data;
-        console.log(this.tiposDocumento)
         this.checkDataLoaded();
       }, error: (err: any) => {
         console.log(err);
@@ -50,7 +49,6 @@ export class PerfilComponent implements OnInit{
     this._catalogService.traerTodoslosTiposPersona().subscribe({
       next: (data: ICatalogo[]) => {
         this.tiposPersona = data;
-        console.log(this.tiposPersona)
         this.checkDataLoaded();
       }, error: (err: any) => {
         console.log(err);
@@ -60,7 +58,6 @@ export class PerfilComponent implements OnInit{
     this._sucursalService.traerTodasLasSucursales().subscribe({
       next: (data: ISucursal[]) => {
         this.sucursales = data;
-        console.log(this.sucursales)
         this.checkDataLoaded();
       }, error: (err: any) => {
         console.log(err);
@@ -101,7 +98,6 @@ export class PerfilComponent implements OnInit{
   }
 
   onEnviar() {
-    console.log(this.formularioActualizacion)
     const personaInput: IPersonaInput = {
       nombre : this.formularioActualizacion.value.nombre,
       identificacion: this.formularioActualizacion.value.documento,

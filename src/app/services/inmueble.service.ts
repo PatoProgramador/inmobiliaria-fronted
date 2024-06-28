@@ -16,4 +16,8 @@ export class InmuebleService {
     return this._httpClient.get<IInmueble[]>(`${this.baseURL}/listar/${ciudad}`)
   }
 
+  public traerInmueblePorPersona(idPersona:number): Observable<IInmueble[]> {
+    return this._httpClient.get<IInmueble[]>(`${this.baseURL}/listar/persona/${idPersona}`)
+  }
+
 }
