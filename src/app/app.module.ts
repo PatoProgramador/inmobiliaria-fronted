@@ -14,6 +14,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PersonaFormComponent } from './components/persona-form/persona-form.component';
 import { InmueblesCardComponent } from './components/inmuebles-card/inmuebles-card.component';
 import { PersonaInmuebleComponent } from './pages/persona-inmueble/persona-inmueble.component';
+import { PublicarInmuebleComponent } from './pages/publicar-inmueble/publicar-inmueble.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PersonaInmuebleComponent } from './pages/persona-inmueble/persona-inmue
     PerfilComponent,
     PersonaFormComponent,
     InmueblesCardComponent,
-    PersonaInmuebleComponent
+    PersonaInmuebleComponent,
+    PublicarInmuebleComponent
   ], 
   imports: [
     BrowserModule,

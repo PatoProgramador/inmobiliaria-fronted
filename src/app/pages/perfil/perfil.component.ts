@@ -25,6 +25,7 @@ export class PerfilComponent implements OnInit{
   isEditing: boolean = false;
   formularioConfig!: any[];
   loading: boolean = false;
+  logPersona?: IPersona;
 
   constructor(private _appService: AppService,
     private form: FormBuilder,
@@ -33,7 +34,6 @@ export class PerfilComponent implements OnInit{
     private _personaService: PersonaService
   ) {}
 
-  logPersona?: IPersona;
 
   ngOnInit(): void {
     this.logPersona = this._appService.getPersonaLog();
@@ -93,11 +93,11 @@ export class PerfilComponent implements OnInit{
     }
   }
 
-  onEditar() {
+  onEditar(): void {
     this.isEditing = true;
   }
 
-  onEnviar() {
+  onEnviar(): void {
     const personaInput: IPersonaInput = {
       nombre : this.formularioActualizacion.value.nombre,
       identificacion: this.formularioActualizacion.value.documento,

@@ -6,6 +6,10 @@
                 <input
                  [placeholder]="field.placeholder" [type]="field.type" class="form-control" [id]="field.formControlName" [formControlName]="field.formControlName">
             </div>
+            <div *ngIf="field.controlType === 'textarea'" class="mb-3">
+                <label [for]="field.formControlName" class="form-label">{{field.label}}</label>
+                <textarea class="form-control" style="height: 150px" [formControlName]="field.formControlName" [placeholder]="field.placeholder"></textarea>
+            </div>
             <div *ngIf="field.controlType === 'select'" class="mb-3">
                 <label [for]="field.formControlName" class="form-label">{{field.label}}</label>
                 <select class="form-select" [formControlName]="field.formControlName">
@@ -13,6 +17,6 @@
                 </select>
             </div>
         </ng-container>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Crear</button>
     </form>
 </div>

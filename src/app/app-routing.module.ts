@@ -6,6 +6,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { RegistroPersonaComponent } from './pages/registro-persona/registro-persona.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PersonaInmuebleComponent } from './pages/persona-inmueble/persona-inmueble.component';
+import { PublicarInmuebleComponent } from './pages/publicar-inmueble/publicar-inmueble.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'registro-persona', component: RegistroPersonaComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'persona-inmuebles', component: PersonaInmuebleComponent},
+  {path: 'publicar-inmueble', component: PublicarInmuebleComponent},
   {path: '**', redirectTo:'home', pathMatch: 'full'}
 ];
 
