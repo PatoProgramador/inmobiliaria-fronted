@@ -4,12 +4,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { InmueblesComponent } from './pages/inmuebles/inmuebles.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { RegistroPersonaComponent } from './pages/registro-persona/registro-persona.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'inmuebles', component: InmueblesComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'registro-persona', component: RegistroPersonaComponent},
+  {path: 'perfil', component: PerfilComponent},
   {path: '**', redirectTo:'home', pathMatch: 'full'}
 ];
 

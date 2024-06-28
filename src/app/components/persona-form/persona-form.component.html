@@ -1,0 +1,18 @@
+<div class="input-group flex-nowrap">
+    <form [formGroup]="formularioIn" (ngSubmit)="onSubmit()">
+        <ng-container *ngFor="let field of formularioConfig">
+            <div *ngIf="field.controlType === 'input'" class="mb-3">
+                <label [for]="field.formControlName" class="form-label">{{field.label}}</label>
+                <input
+                 [placeholder]="field.placeholder" [type]="field.type" class="form-control" [id]="field.formControlName" [formControlName]="field.formControlName">
+            </div>
+            <div *ngIf="field.controlType === 'select'" class="mb-3">
+                <label [for]="field.formControlName" class="form-label">{{field.label}}</label>
+                <select class="form-select" [formControlName]="field.formControlName">
+                    <option *ngFor="let option of field.options" [value]="option.id">{{option.descripcion || option.nombre}}</option>
+                </select>
+            </div>
+        </ng-container>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

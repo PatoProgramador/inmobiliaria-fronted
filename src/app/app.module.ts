@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistroPersonaComponent } from './pages/registro-persona/registro-persona.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { PersonaFormComponent } from './components/persona-form/persona-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RegistroPersonaComponent } from './pages/registro-persona/registro-pers
     HomeComponent,
     InmueblesComponent,
     RegistroComponent,
-    RegistroPersonaComponent
+    RegistroPersonaComponent,
+    PerfilComponent,
+    PersonaFormComponent
   ],
   imports: [
     BrowserModule,

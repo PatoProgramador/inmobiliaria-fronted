@@ -1,34 +1,6 @@
-<div class="input-group flex-nowrap">
-    <form [formGroup]="formularioRegistro" (ngSubmit)="enviar()">
-        <div class="mb-3">
-            <label for="name" class="form-label">Nombres</label>
-            <input
-             placeholder="Pato patoso" type="text" class="form-control" id="name" formControlName="nombre">
-        </div>
-        <select class="form-select" formControlName="tipoDocumento">
-            <option *ngFor="let td of tiposDocumento" [value]="td.id">{{td.descripcion}}</option>
-        </select>
-        <select class="form-select" formControlName="tipoPersona">
-            <option *ngFor="let tp of tiposPersona" [value]="tp.id">{{tp.descripcion}}</option>
-        </select>
-        <div class="mb-3">
-            <label for="documento" class="form-label">Documento</label>
-            <input
-             placeholder="00000000" type="text" class="form-control" id="documento" formControlName="documento">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo</label>
-            <input
-             placeholder="elPato@gmail.com" type="email" class="form-control" id="email" formControlName="correo">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Telefono</label>
-            <input
-             placeholder="000 000 0000" type="email" class="form-control" id="email" formControlName="telefono">
-        </div>
-        <select class="form-select" formControlName="sucursal">
-            <option *ngFor="let td of sucursales" [value]="td.id">{{td.nombre}}</option>
-        </select>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+<ng-container *ngIf="isDataLoaded$ | async; else loadingTemplate">
+    <app-persona-form [formularioIn]="formularioRegistro" [formularioConfig]="formularioConfig" (enviar)="onEnviar()"></app-persona-form>
+</ng-container>
+<ng-template #loadingTemplate>
+    <div>Cargando datos...</div>
+</ng-template>

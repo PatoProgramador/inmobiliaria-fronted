@@ -1,0 +1,23 @@
+
+<div class="container">
+    <img class="profile-avatar" src="assets/images/rick.svg" alt="profile-avatar">
+    <div *ngIf="!isEditing">
+        <h2>Información personal</h2>
+        <h5>Nombre: <span>{{logPersona?.nombre}}</span></h5>
+        <h5>Tipo de identificacion: <span>{{logPersona?.tipoIdentificacion}}</span></h5>
+        <h5>Identificacion: <span>{{logPersona?.identificacion}}</span></h5>
+        <h5>correo: <span>{{logPersona?.correo}}</span></h5>
+        <h5>telefono: <span>{{logPersona?.telefono}}</span></h5>
+        <h5>tipo de persona: <span>{{logPersona?.tipoPersona}}</span></h5>
+        <h5>sucursal: <span>{{logPersona?.sucursal}}</span></h5>
+        <button (click)="onEditar()" class="btn btn-primary">Editar</button>
+    </div>
+    <ng-container *ngIf="isEditing">
+        <ng-container *ngIf="isDataLoaded$ | async; else loadingTemplate">
+            <app-persona-form [formularioIn]="formularioActualizacion" [formularioConfig]="formularioConfig" (enviar)="onEnviar()"></app-persona-form>
+        </ng-container>
+    </ng-container>
+    <ng-template #loadingTemplate>
+        <div>Cargando datos...</div>
+    </ng-template>
+</div>

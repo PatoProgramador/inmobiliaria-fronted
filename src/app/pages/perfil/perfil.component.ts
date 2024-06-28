@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ICatalogo } from 'src/app/models/catalogo.model';
 import { IPersona } from 'src/app/models/persona.model';
@@ -12,40 +11,32 @@ import { PersonaService } from 'src/app/services/persona.service';
 import { SucursalService } from 'src/app/services/sucursal.service';
 
 @Component({
-  selector: 'app-registro-persona',
-  templateUrl: './registro-persona.component.html',
-  styleUrls: ['./registro-persona.component.css']
+  selector: 'app-perfil',
+  templateUrl: './perfil.component.html',
+  styleUrls: ['./perfil.component.css']
 })
-export class RegistroPersonaComponent implements OnInit {
+export class PerfilComponent implements OnInit{
 
+  formularioActualizacion!: FormGroup;
   tiposDocumento: ICatalogo[] = [];
   tiposPersona: ICatalogo[] = [];
   sucursales: ISucursal[] = [];
   isDataLoaded$ = new BehaviorSubject<boolean>(false);
-  formularioRegistro: FormGroup;
+  isEditing: boolean = false;
   formularioConfig!: any[];
   loading: boolean = false;
 
-  constructor(private form: FormBuilder,
-    private _appService: AppService,
+  constructor(private _appService: AppService,
+    private form: FormBuilder,
     private _catalogService: CatalogService,
     private _sucursalService: SucursalService,
-    private _personaService: PersonaService,
-    private router: Router
-  ) {
-    this.formularioRegistro = this.form.group({
-      identificacion: ['', Validators.required],
-      tipoPersona: ['', Validators.required],
-      tipoDocumento: ['', Validators.required],
-      sucursal: ['', Validators.required],
-      nombre: ['', Validators.required],
-      documento: ['', Validators.required],
-      correo: ['', [Validators.required, Validators.email]],
-      telefono: ['', [Validators.required, Validators.minLength(5)]]
-    })
-  }
+    private _personaService: PersonaService
+  ) {}
+
+  logPersona?: IPersona;
 
   ngOnInit(): void {
+    this.logPersona = this._appService.getPersonaLog();
     this._catalogService.traerTodosLosTiposDeDocumento().subscribe({
       next: (data: ICatalogo[]) => {
         this.tiposDocumento = data;
@@ -77,7 +68,6 @@ export class RegistroPersonaComponent implements OnInit {
       }
     })
   }
-
   checkDataLoaded() {
     if (this.tiposDocumento.length && this.tiposPersona.length && this.sucursales.length) {
       this.formularioConfig = [
@@ -89,29 +79,53 @@ export class RegistroPersonaComponent implements OnInit {
         { label: 'Telefono', placeholder: '000 000 0000', type: 'text', formControlName: 'telefono', controlType: 'input' },
         { label: 'Sucursal', formControlName: 'sucursal', options: this.sucursales, controlType: 'select' }
       ];
+      const idTipoDocumento: string = String(this.tiposDocumento.filter(td => td.descripcion == this.logPersona?.tipoIdentificacion)[0].id)
+      const idTipoPersona: string = String(this.tiposPersona.filter(tp => tp.descripcion == this.logPersona?.tipoPersona)[0].id)
+      const idSucursal: string = String(this.sucursales.filter(s => s.nombre == this.logPersona?.sucursal)[0].id)
+      this.formularioActualizacion = this.form.group({
+        tipoPersona: [idTipoPersona],
+        tipoDocumento: [idTipoDocumento],
+        sucursal: [idSucursal],
+        nombre: [this.logPersona?.nombre],
+        documento: [this.logPersona?.identificacion],
+        correo: [this.logPersona?.correo, Validators.email],
+        telefono: [this.logPersona?.telefono, Validators.minLength(5)]
+      })
       this.isDataLoaded$.next(true);
       this.loading = false;
     }
   }
 
-  onEnviar() {
-    const personaInput: IPersonaInput = {
-      nombre : this.formularioRegistro.value.nombre,
-      identificacion: this.formularioRegistro.value.documento,
-      telefono: this.formularioRegistro.value.telefono,
-      correo: this.formularioRegistro.value.correo
-    }
-    const idTipoPersona: number = Number(this.formularioRegistro.value.tipoPersona);
-    const idTipoIdentificacion: number = Number(this.formularioRegistro.value.tipoDocumento);
-    const idSucursal: number = Number(this.formularioRegistro.value.sucursal);
+  onEditar() {
+    this.isEditing = true;
+  }
 
-    this._personaService.crearPersona(idTipoPersona, idTipoIdentificacion, idSucursal, personaInput).subscribe({
+  onEnviar() {
+    console.log(this.formularioActualizacion)
+    const personaInput: IPersonaInput = {
+      nombre : this.formularioActualizacion.value.nombre,
+      identificacion: this.formularioActualizacion.value.documento,
+      telefono: this.formularioActualizacion.value.telefono,
+      correo: this.formularioActualizacion.value.correo
+    }
+
+    const oldIdTipoDocumento: string = String(this.tiposDocumento.filter(td => td.descripcion == this.logPersona?.tipoIdentificacion)[0].id)
+    const oldIdTipoPersona: string = String(this.tiposPersona.filter(tp => tp.descripcion == this.logPersona?.tipoPersona)[0].id)
+    const oldIdSucursal: string = String(this.sucursales.filter(s => s.nombre == this.logPersona?.sucursal)[0].id)
+
+    const newIdTipoPersona: number = Number(this.formularioActualizacion.value.tipoPersona == oldIdTipoPersona ? 0 : this.formularioActualizacion.value.tipoPersona);
+    const newIdTipoIdentificacion: number = Number(this.formularioActualizacion.value.tipoDocumento == oldIdTipoDocumento ? 0 : this.formularioActualizacion.value.tipoDocumento);
+    const newIdSucursal: number = Number(this.formularioActualizacion.value.sucursal == oldIdSucursal ? 0 : this.formularioActualizacion.value.sucursal);
+    const idPersona: number = this.logPersona?.id || 0;
+
+    this._personaService.modificarPersona(idPersona, newIdTipoPersona, newIdTipoIdentificacion, newIdSucursal, personaInput).subscribe({
       next: (data:IPersona) => {
         if (data) {
           this._appService.setPersonaLog(data);
           this._appService.login();
-          alert("logiao :)")
-          this.router.navigate(['home']);
+          this.logPersona = data;
+          this.isEditing = false;
+          alert("Actualizao :)")
         } else {
           alert("fallo alguito")
         }

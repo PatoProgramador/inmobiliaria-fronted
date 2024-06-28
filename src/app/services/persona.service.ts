@@ -21,4 +21,7 @@ export class PersonaService {
     return this._httpClient.post<IPersona>(`${this.baseURL}/crearPersona/tipoPersona/${idTipoPersona}/tipoIdentificacion/${idTipoIdentificacion}/sucursal/${idSucursal}`, personaInput)
   }
 
+  public modificarPersona(idPersona:number ,idTipoPersona: number, idTipoIdentificacion: number, idSucursal: number, personaInput: IPersonaInput) {
+    return this._httpClient.put<IPersona>(`${this.baseURL}/modificarPersona/${idPersona}/tipoPersona/${idTipoPersona}/tipoIdentificacion/${idTipoIdentificacion}/sucursal/${idSucursal}`, personaInput)
+  }
 }
