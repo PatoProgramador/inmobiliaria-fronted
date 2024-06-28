@@ -122,7 +122,7 @@ export class PerfilComponent implements OnInit{
       next: (data:IPersona) => {
         if (data) {
           this._appService.setPersonaLog(data);
-          this._appService.login();
+          this._appService.verificarRol();
           this.logPersona = data;
           this.isEditing = false;
           alert("Actualizao :)")

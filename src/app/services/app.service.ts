@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AppService {
 
   private autenticado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private esComercial: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   ciudad: string = '';
   personaLogueada?: IPersona;
@@ -30,7 +31,7 @@ export class AppService {
   getPersonaLog(): IPersona | undefined {
     return this.personaLogueada;
   }
-
+  // observables
   login(): void {
     this.autenticado.next(true);
   }
@@ -41,5 +42,13 @@ export class AppService {
 
   isAuthenticated(): Observable<boolean> {
     return this.autenticado.asObservable();
+  }
+
+  verificarRol(): void {
+    this.esComercial.next(this.personaLogueada?.tipoPersona == 'Comercial' ? true : false);
+  }
+
+  isComercial(): Observable<boolean> {
+    return this.esComercial.asObservable();
   }
 }

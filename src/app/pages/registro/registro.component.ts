@@ -55,6 +55,7 @@ export class RegistroComponent implements OnInit {
         if (this.persona) {
           this._appService.setPersonaLog(this.persona);
           this._appService.login();
+          this._appService.verificarRol();
           alert("SI EXISTE")
           this.router.navigate(['home']);
         } else {

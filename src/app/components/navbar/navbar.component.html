@@ -12,6 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="inmuebles">Inmuebles</a>
           </li>
+          <li *ngIf="esComercial" class="nav-item">
+            <a class="nav-link" routerLink="perfil">Personas</a>
+          </li>
           <li *ngIf="!isAuthenticated" class="nav-item">
             <a class="nav-link" routerLink="registro">Iniciar sesión</a>
           </li>

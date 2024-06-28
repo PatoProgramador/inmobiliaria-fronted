@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   private authSubscription?: Subscription;
   ciudad: string = '';
   persona?: IPersona = this._appService.getPersonaLog();
+  esComercial: boolean = false;
 
   ngOnInit(): void {
     this.authSubscription = this._appService.isAuthenticated().subscribe(
@@ -23,7 +24,11 @@ export class NavbarComponent implements OnInit {
         this.isAuthenticated = isAuthenticated;
       }
     );
-    console.log(this._appService.getCiudad())
-      this.ciudad = this._appService.getCiudad();
+    this._appService.isComercial().subscribe(
+      isComercial => {
+        this.esComercial = isComercial;
+      }
+    )
+    this.ciudad = this._appService.getCiudad();
   }
 }
