@@ -19,6 +19,7 @@ export class InmuebleDetallesComponent implements OnInit {
   propietario!: IPersona;
   loading: boolean = true;
   isLoged: boolean = false;
+  isOwner: boolean = false;
   
   imagenPar: string = 'assets/images/bedfb7dbe443427334f9da08d74b39f4.png';
   imagenImpar: string = 'assets/images/casa-los-simpsons.jpg';
@@ -43,7 +44,7 @@ export class InmuebleDetallesComponent implements OnInit {
     if (this._appService.getPersonaLog()) {
       this.isLoged = true;
     }
-
+    
     this._route.params.subscribe({
       next: (params: Params) => {
         this.loadInmuebleData(params['productId']);
@@ -89,6 +90,9 @@ export class InmuebleDetallesComponent implements OnInit {
 
   private checkLoading(): void {
     if (this.inmueble && this.propietario && this.comerciales) {
+      if (this._appService.getPersonaLog()?.id == this.inmueble.id_Propietario) {
+        this.isOwner = true;
+      }
       this.loading = false;
     }
   }

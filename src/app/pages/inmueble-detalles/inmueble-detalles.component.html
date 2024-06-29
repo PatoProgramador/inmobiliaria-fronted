@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!loading" class="container">
     <img [src]="inmueble.id % 2 === 0 ? imagenPar : imagenImpar" class="card-img-top" alt="{{inmueble.id}}">
     <div *ngIf="!isCita">
         <h2>{{inmueble.direccion}}</h2>
@@ -7,9 +7,11 @@
         <h5>Precio: <span>{{inmueble.precio | currency}}</span></h5>
         <div *ngIf="isLoged">
             <button class="btn btn-primary">Editar</button>
-            <button class="btn btn-primary">Comprar</button>
-            <button class="btn btn-primary">Arrendar</button>
-            <button class="btn btn-primary" (click)="onCita()">Agendar cita</button>
+            <ng-container *ngIf="!isOwner">
+                <button class="btn btn-primary">Comprar</button>
+                <button class="btn btn-primary">Arrendar</button>
+                <button class="btn btn-primary" (click)="onCita()">Agendar cita</button>
+            </ng-container>
         </div>
         <div *ngIf="!isLoged">
             <button class="btn btn-primary" routerLink="/registro">Inicia sesión para poder comprar o arrendar</button>
@@ -23,4 +25,7 @@
     <ng-template #loadingTemplate>
         <div>Cargando datos...</div>
     </ng-template>
+</div>
+<div *ngIf="loading">
+    cargando...
 </div>

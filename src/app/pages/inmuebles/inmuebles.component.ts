@@ -24,6 +24,7 @@ export class InmueblesComponent implements OnInit {
   ngOnInit(): void {   
     this._inmuebleService.traerInmueblesPorCiudad(this._appService.getCiudad()).subscribe({
       next: (data: IInmueble[]) => {
+        console.log(data)
         this.inmuebles = data;
         this.loading = false;
       },
