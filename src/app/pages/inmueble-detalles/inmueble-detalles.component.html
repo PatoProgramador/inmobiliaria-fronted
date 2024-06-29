@@ -1,6 +1,6 @@
 <div class="container">
     <img [src]="inmueble.id % 2 === 0 ? imagenPar : imagenImpar" class="card-img-top" alt="{{inmueble.id}}">
-    <div>
+    <div *ngIf="!isCita">
         <h2>{{inmueble.direccion}}</h2>
         <h5>Detalles: <span>{{inmueble.detalles}}</span></h5>
         <h5>Propietario: <span>{{inmueble.propietario}}</span></h5>
@@ -9,14 +9,16 @@
             <button class="btn btn-primary">Editar</button>
             <button class="btn btn-primary">Comprar</button>
             <button class="btn btn-primary">Arrendar</button>
-            <button class="btn btn-primary">Agendar cita</button>
+            <button class="btn btn-primary" (click)="onCita()">Agendar cita</button>
         </div>
         <div *ngIf="!isLoged">
             <button class="btn btn-primary" routerLink="/registro">Inicia sesión para poder comprar o arrendar</button>
         </div>
     </div>
     <div *ngIf="!loading; else loadingTemplate">
-        <app-agendar-cita [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario"></app-agendar-cita>
+        <ng-container *ngIf="isCita">
+            <app-agendar-cita [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onFormSubmitted()"></app-agendar-cita>
+        </ng-container>
     </div>
     <ng-template #loadingTemplate>
         <div>Cargando datos...</div>

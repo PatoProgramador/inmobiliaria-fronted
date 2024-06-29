@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICita } from 'src/app/models/cita.model';
 import { ICitaInput } from 'src/app/models/citaInput.model';
@@ -17,6 +17,7 @@ export class AgendarCitaComponent implements OnInit {
   @Input() inmueble!: IInmueble;
   @Input() propietario!: IPersona;
   @Input() comerciales!: IPersona[];
+  @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
 
   formularioCita!: FormGroup;
   loading: boolean = true;
@@ -39,8 +40,6 @@ export class AgendarCitaComponent implements OnInit {
       { label: 'Descripción', placeholder: 'Para poder ver con más detalles x, y ,z ....', type: 'text', formControlName: 'descripcion', controlType: 'textarea' },
       { label: 'Comercial encargado', formControlName: 'comercial', options: this.comerciales, controlType: 'select' },
     ];
-
-    console.log(this.comerciales);
   }
 
   onEnviar() {
@@ -57,7 +56,8 @@ export class AgendarCitaComponent implements OnInit {
     this._citaService.crearCita(idInmueble,idComercial,idComprador,idPropietario, cita).subscribe({
       next: (data: ICita) => {
         if (data) {
-          alert("Cita agendada :)")
+          this.formSubmitted.emit();
+          alert("Cita agendada :)");
         } else {
           alert("Ocurrio un error")
         }

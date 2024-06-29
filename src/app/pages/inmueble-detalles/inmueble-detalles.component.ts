@@ -19,15 +19,26 @@ export class InmuebleDetallesComponent implements OnInit {
   propietario!: IPersona;
   loading: boolean = true;
   isLoged: boolean = false;
+  
   imagenPar: string = 'assets/images/bedfb7dbe443427334f9da08d74b39f4.png';
   imagenImpar: string = 'assets/images/casa-los-simpsons.jpg';
+  
+  isCita = false;
 
   constructor(private _inmuebleService: InmuebleService,
     private _route: ActivatedRoute,
     private _appService: AppService,
-    private _personaService: PersonaService
+    private _personaService: PersonaService,
   ) {}
 
+  onCita(): void {
+    this.isCita = true;
+  }
+
+  onFormSubmitted(): void {
+    this.isCita = false;
+  }
+  
   ngOnInit(): void {
     if (this._appService.getPersonaLog()) {
       this.isLoged = true;
