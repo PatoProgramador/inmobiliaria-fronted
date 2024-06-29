@@ -4,7 +4,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" routerLink="">Inicio</a>
@@ -13,13 +13,13 @@
             <a class="nav-link" routerLink="inmuebles">Inmuebles</a>
           </li>
           <li *ngIf="!esComercial && isAuthenticated" class="nav-item">
-            <a class="nav-link" routerLink="publicar-inmueble">Publicar un inmueble</a>
+            <a class="nav-link" routerLink="publicar-inmueble">Publica un inmueble</a>
           </li>
           <li *ngIf="!esComercial && isAuthenticated" class="nav-item">
             <a class="nav-link" routerLink="persona-inmuebles">Tus inmuebles</a>
           </li>
           <li *ngIf="esComercial" class="nav-item">
-            <a class="nav-link" routerLink="perfil">Personas</a>
+            <a class="nav-link" routerLink="lista-personas">Personas</a>
           </li>
           <li *ngIf="!isAuthenticated" class="nav-item">
             <a class="nav-link" routerLink="registro">Iniciar sesión</a>

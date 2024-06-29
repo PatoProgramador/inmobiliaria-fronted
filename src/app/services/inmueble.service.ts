@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IInmueble } from '../models/inmueble.model';
 import { IInmuebleInput } from '../models/inmuebleInput.mode';
+import { IPersona } from '../models/persona.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,14 @@ export class InmuebleService {
 
   public traerInmueblePorPersona(idPersona:number): Observable<IInmueble[]> {
     return this._httpClient.get<IInmueble[]>(`${this.baseURL}/listar/persona/${idPersona}`)
+  }
+
+  public traerInmueblePorId(idInmueble: number): Observable<IInmueble> {
+    return this._httpClient.get<IInmueble>(`${this.baseURL}/${idInmueble}`)
+  }
+
+  public traerPropietario(idInmueble: number): Observable<IPersona> {
+    return this._httpClient.get<IPersona>(`${this.baseURL}/${idInmueble}/propietario`)
   }
 
   public crearInmueble(idPersona: number, inmueble: IInmuebleInput ): Observable<IInmueble> {

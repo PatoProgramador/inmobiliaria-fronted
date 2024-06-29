@@ -13,6 +13,14 @@ export class PersonaService {
 
   constructor(private _httpClient: HttpClient) {}
 
+  public traerPersonas(): Observable<IPersona[]> {
+    return this._httpClient.get<IPersona[]>(`${this.baseURL}/listar`)
+  }
+
+  public traerTodosLosComerciales(): Observable<IPersona[]> {
+    return this._httpClient.get<IPersona[]>(`${this.baseURL}/listar/comerciales`)
+  }
+
   public traerPersonaPorTipoDocumento(tipoDocumento: number, documento: string): Observable<IPersona> {
     return this._httpClient.get<IPersona>(`${this.baseURL}/tipoDocumento/${tipoDocumento}/documento/${documento}`)
   }

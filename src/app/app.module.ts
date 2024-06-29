@@ -15,6 +15,9 @@ import { PersonaFormComponent } from './components/persona-form/persona-form.com
 import { InmueblesCardComponent } from './components/inmuebles-card/inmuebles-card.component';
 import { PersonaInmuebleComponent } from './pages/persona-inmueble/persona-inmueble.component';
 import { PublicarInmuebleComponent } from './pages/publicar-inmueble/publicar-inmueble.component';
+import { ListarPersonaComponent } from './pages/listar-persona/listar-persona.component';
+import { InmuebleDetallesComponent } from './pages/inmueble-detalles/inmueble-detalles.component';
+import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { PublicarInmuebleComponent } from './pages/publicar-inmueble/publicar-in
     PersonaFormComponent,
     InmueblesCardComponent,
     PersonaInmuebleComponent,
-    PublicarInmuebleComponent
+    PublicarInmuebleComponent,
+    ListarPersonaComponent,
+    InmuebleDetallesComponent,
+    AgendarCitaComponent
   ], 
   imports: [
     BrowserModule,

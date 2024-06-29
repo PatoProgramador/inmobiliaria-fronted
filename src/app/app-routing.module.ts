@@ -7,6 +7,8 @@ import { RegistroPersonaComponent } from './pages/registro-persona/registro-pers
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PersonaInmuebleComponent } from './pages/persona-inmueble/persona-inmueble.component';
 import { PublicarInmuebleComponent } from './pages/publicar-inmueble/publicar-inmueble.component';
+import { ListarPersonaComponent } from './pages/listar-persona/listar-persona.component';
+import { InmuebleDetallesComponent } from './pages/inmueble-detalles/inmueble-detalles.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent},
   {path: 'persona-inmuebles', component: PersonaInmuebleComponent},
   {path: 'publicar-inmueble', component: PublicarInmuebleComponent},
+  {path: 'lista-personas', component: ListarPersonaComponent},
+  {path: 'inmueble-detalles/:productId', component: InmuebleDetallesComponent},
   {path: '**', redirectTo:'home', pathMatch: 'full'}
 ];
 
