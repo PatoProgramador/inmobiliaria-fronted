@@ -1,1 +1,41 @@
-<p>pagos-pendientes works!</p>
+<h2>Selecciona los pagos que deseas ver</h2>
+<section *ngIf="!loading">
+    <div>
+        <button class="btn btn-primary" (click)="onCompra()">Compras</button>
+        <button class="btn btn-primary" (click)="onArriendo()">Arriendos</button>
+        <button class="btn btn-primary" (click)="onAnalisis()">Analisis de riesgo</button>
+    </div>
+    <div *ngIf="!analisis && !arriendo && compra">
+        <ng-container *ngIf="comprasPendientes">
+            <ng-container *ngFor="let compra of comprasPendientes">
+                <app-pago-card [cuenta]="compra.cuenta" [monto]="compra.monto" [descripcion]="compra.inmueble_compra"></app-pago-card>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!comprasPendientes">
+            <h2>No tienes compras pendientes por pagar :)</h2>
+        </ng-container>
+    </div>
+    <div *ngIf="!analisis && arriendo && !compra">
+        <ng-container *ngIf="arriendosPendientes">
+            <ng-container *ngFor="let arriendo of arriendosPendientes">
+                <app-pago-card [cuenta]="arriendo.cuenta" [monto]="arriendo.monto" [descripcion]="arriendo.inmueble_arriendo"></app-pago-card>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!arriendosPendientes">
+            <h2>No tienes arriendos pendientes por pagar :)</h2>
+        </ng-container>
+    </div>
+    <div *ngIf="analisis && !arriendo && !compra">
+        <ng-container *ngIf="analisisPendientes">
+            <ng-container *ngFor="let analisis of analisisPendientes">
+                <app-pago-card [cuenta]="analisis.cuenta" [monto]="analisis.monto" [descripcion]="analisis.analisis_riesgo"></app-pago-card>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!analisisPendientes">
+            <h2>No tienes analisis de riesgo pendientes por pagar :)</h2>
+        </ng-container>
+    </div>
+</section>
+<div *ngIf="loading">
+    cargando...
+</div>

@@ -24,6 +24,7 @@ import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inm
 import { GenerarAvaluoComponent } from './components/generar-avaluo/generar-avaluo.component';
 import { GenerarAnalisisComponent } from './components/generar-analisis/generar-analisis.component';
 import { PagosPendientesComponent } from './pages/pagos-pendientes/pagos-pendientes.component';
+import { PagoCardComponent } from './components/pago-card/pago-card.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PagosPendientesComponent } from './pages/pagos-pendientes/pagos-pendien
     EditarInmuebleComponent,
     GenerarAvaluoComponent,
     GenerarAnalisisComponent,
-    PagosPendientesComponent
+    PagosPendientesComponent,
+    PagoCardComponent
   ], 
   imports: [
     BrowserModule,
