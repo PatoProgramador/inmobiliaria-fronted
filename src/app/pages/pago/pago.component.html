@@ -1,0 +1,7 @@
+<section *ngIf="!loading">
+    <h2>Pagos</h2>
+    <app-persona-form [buttonActionMessage]="action" [formularioIn]="formularioPago" [formularioConfig]="formularioConfig" (enviar)="onPago()"></app-persona-form>
+</section>
+<div *ngIf="loading">
+    cargando...
+</div>

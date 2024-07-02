@@ -23,4 +23,8 @@ export class CuentaCobroService {
   public obtenerArriendosPendientes(idPersona: number): Observable<ICuentaCobro[]> {
     return this._httpClient.get<ICuentaCobro[]>(`${this.baseURL}/listar/arriendosPendientes/${idPersona}`);
   }
+
+  public obtenerCuentaCobroPorId(idCuenta: number): Observable<ICuentaCobro> {
+    return this._httpClient.get<ICuentaCobro>(`${this.baseURL}/${idCuenta}`)
+  }
 }

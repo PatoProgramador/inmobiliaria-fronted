@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class PagoCardComponent {
 
+  @Input() idCuenta!:number;
   @Input() cuenta!: string;
   @Input() monto!: number;
   @Input() descripcion!: string;

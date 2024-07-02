@@ -5,33 +5,33 @@
         <button class="btn btn-primary" (click)="onArriendo()">Arriendos</button>
         <button class="btn btn-primary" (click)="onAnalisis()">Analisis de riesgo</button>
     </div>
-    <div *ngIf="!analisis && !arriendo && compra">
+    <div *ngIf="compra">
         <ng-container *ngIf="comprasPendientes">
             <ng-container *ngFor="let compra of comprasPendientes">
-                <app-pago-card [cuenta]="compra.cuenta" [monto]="compra.monto" [descripcion]="compra.inmueble_compra"></app-pago-card>
+                <app-pago-card [idCuenta]="compra.id" [cuenta]="compra.cuenta" [monto]="compra.monto" [descripcion]="compra.inmueble_compra"></app-pago-card>
             </ng-container>
         </ng-container>
-        <ng-container *ngIf="!comprasPendientes">
+        <ng-container *ngIf="!comprasPendientes  || comprasPendientes.length === 0">
             <h2>No tienes compras pendientes por pagar :)</h2>
         </ng-container>
     </div>
-    <div *ngIf="!analisis && arriendo && !compra">
+    <div *ngIf="arriendo">
         <ng-container *ngIf="arriendosPendientes">
             <ng-container *ngFor="let arriendo of arriendosPendientes">
-                <app-pago-card [cuenta]="arriendo.cuenta" [monto]="arriendo.monto" [descripcion]="arriendo.inmueble_arriendo"></app-pago-card>
+                <app-pago-card [idCuenta]="arriendo.id" [cuenta]="arriendo.cuenta" [monto]="arriendo.monto" [descripcion]="arriendo.inmueble_arriendo"></app-pago-card>
             </ng-container>
         </ng-container>
-        <ng-container *ngIf="!arriendosPendientes">
+        <ng-container *ngIf="!arriendosPendientes || arriendosPendientes.length == 0">
             <h2>No tienes arriendos pendientes por pagar :)</h2>
         </ng-container>
     </div>
-    <div *ngIf="analisis && !arriendo && !compra">
+    <div *ngIf="analisis">
         <ng-container *ngIf="analisisPendientes">
             <ng-container *ngFor="let analisis of analisisPendientes">
-                <app-pago-card [cuenta]="analisis.cuenta" [monto]="analisis.monto" [descripcion]="analisis.analisis_riesgo"></app-pago-card>
+                <app-pago-card [idCuenta]="analisis.id" [cuenta]="analisis.cuenta" [monto]="analisis.monto" [descripcion]="analisis.analisis_riesgo"></app-pago-card>
             </ng-container>
         </ng-container>
-        <ng-container *ngIf="!analisisPendientes">
+        <ng-container *ngIf="!analisisPendientes || analisisPendientes.length === 0">
             <h2>No tienes analisis de riesgo pendientes por pagar :)</h2>
         </ng-container>
     </div>

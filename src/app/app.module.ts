@@ -25,6 +25,7 @@ import { GenerarAvaluoComponent } from './components/generar-avaluo/generar-aval
 import { GenerarAnalisisComponent } from './components/generar-analisis/generar-analisis.component';
 import { PagosPendientesComponent } from './pages/pagos-pendientes/pagos-pendientes.component';
 import { PagoCardComponent } from './components/pago-card/pago-card.component';
+import { PagoComponent } from './pages/pago/pago.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PagoCardComponent } from './components/pago-card/pago-card.component';
     GenerarAvaluoComponent,
     GenerarAnalisisComponent,
     PagosPendientesComponent,
-    PagoCardComponent
+    PagoCardComponent,
+    PagoComponent
   ], 
   imports: [
     BrowserModule,
