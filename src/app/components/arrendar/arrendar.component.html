@@ -1,0 +1,23 @@
+<ng-container>
+    <h3>{{inmueble.direccion}}</h3>
+    <ng-container *ngIf="!isPaying">
+        <h3>Precio: {{inmueble.precio | currency}}</h3>
+        <app-persona-form [buttonActionMessage]="action" [formularioIn]="formularioArriendo" [formularioConfig]="formularioConfig" (enviar)="onEnviar()"></app-persona-form>
+        <button class="btn btn-primary" (click)="onRegresar()">regresar</button>
+    </ng-container>
+    <ng-container *ngIf="isPaying">
+        <h2>Resumen de tu arriendo</h2>
+        <h3>fecha de inicio: {{compra.fecha_inicio | date: "mediumDate" }}</h3>
+        <h3 *ngIf="compra.fecha_fin">Fecha de finalización: {{compra.fecha_fin}}</h3>
+        <h2>Contacto del propietario</h2>
+        <h3>Nombre: {{compra.propietario}}</h3>
+        <h3>Correo: {{propietario.correo}}</h3>
+        <h3>Telefono: {{propietario.telefono}}</h3>
+        <h2>Contacto del comercial encargado</h2>
+        <h3>Comercial: {{compra.comercial_encargado}}</h3>
+        <h2>Cuenta de cobro</h2>
+        <h3>cuenta: {{compra.cuenta_cobro}}</h3>
+        <h3>valor: {{compra.monto | currency}}</h3>
+        <button class="btn btn-primary" (click)="onRegresar()">regresar</button>
+    </ng-container>
+</ng-container>

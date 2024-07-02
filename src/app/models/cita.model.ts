@@ -5,6 +5,10 @@ export interface ICita {
     descripcion: string,
     id_propietario: number,
     propietario: string,
+    correo_propietario: string,
+    telefono_propietario: string,
     id_comercial: number,
-    comercial: string
+    comercial: string,
+    correo_comercial: string,
+    telefono_comercial: string
 }

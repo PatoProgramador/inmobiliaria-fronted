@@ -25,6 +25,8 @@ export class InmuebleDetallesComponent implements OnInit {
   imagenImpar: string = 'assets/images/casa-los-simpsons.jpg';
   
   isCita = false;
+  isCompra = false;
+  isArriendo = false;
 
   constructor(private _inmuebleService: InmuebleService,
     private _route: ActivatedRoute,
@@ -32,12 +34,29 @@ export class InmuebleDetallesComponent implements OnInit {
     private _personaService: PersonaService,
   ) {}
 
+  // modal de compra
+  onCompra(): void {
+    this.isCompra = true;
+  }
+
+  onCompraSubmit(): void {
+    this.isCompra = false;
+  }
+  // modal de cita
   onCita(): void {
     this.isCita = true;
   }
 
   onFormSubmitted(): void {
     this.isCita = false;
+  }
+  // modal de arriendo
+  onArriendo(): void {
+    this.isArriendo = true;
+  }
+
+  onArriendoSubmit(): void {
+    this.isArriendo = false;
   }
   
   ngOnInit(): void {

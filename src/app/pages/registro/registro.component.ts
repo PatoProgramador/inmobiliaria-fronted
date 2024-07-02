@@ -19,6 +19,7 @@ export class RegistroComponent implements OnInit {
   formularioLogin: FormGroup;
   exists: boolean = false;
   persona?: IPersona | null;
+  action: string = 'iniciar sesión'
 
   constructor(private _catalogService: CatalogService,
     private _personaService: PersonaService,

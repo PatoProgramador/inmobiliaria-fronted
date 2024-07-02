@@ -1,25 +1,36 @@
 <div *ngIf="!loading" class="container">
     <img [src]="inmueble.id % 2 === 0 ? imagenPar : imagenImpar" class="card-img-top" alt="{{inmueble.id}}">
-    <div *ngIf="!isCita">
+    <div *ngIf="!isCita && !isCompra && !isArriendo">
         <h2>{{inmueble.direccion}}</h2>
         <h5>Detalles: <span>{{inmueble.detalles}}</span></h5>
         <h5>Propietario: <span>{{inmueble.propietario}}</span></h5>
         <h5>Precio: <span>{{inmueble.precio | currency}}</span></h5>
         <div *ngIf="isLoged">
-            <button class="btn btn-primary">Editar</button>
+            <button *ngIf="isOwner" class="btn btn-primary">Editar</button>
             <ng-container *ngIf="!isOwner">
-                <button class="btn btn-primary">Comprar</button>
-                <button class="btn btn-primary">Arrendar</button>
+                <button class="btn btn-primary" (click)="onCompra()">Comprar</button>
+                <button class="btn btn-primary" (click)="onArriendo()">Arrendar</button>
                 <button class="btn btn-primary" (click)="onCita()">Agendar cita</button>
             </ng-container>
         </div>
         <div *ngIf="!isLoged">
             <button class="btn btn-primary" routerLink="/registro">Inicia sesión para poder comprar o arrendar</button>
         </div>
+        <button class="btn btn-primary" routerLink="/inmuebles">Regresar</button>
     </div>
     <div *ngIf="!loading; else loadingTemplate">
         <ng-container *ngIf="isCita">
             <app-agendar-cita [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onFormSubmitted()"></app-agendar-cita>
+        </ng-container>
+    </div>
+    <div *ngIf="!loading; else loadingTemplate">
+        <ng-container *ngIf="isCompra">
+            <app-comprar [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onCompraSubmit()"></app-comprar>
+        </ng-container>
+    </div>
+    <div *ngIf="!loading; else loadingTemplate">
+        <ng-container *ngIf="isArriendo">
+            <app-arrendar [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onArriendoSubmit()"></app-arrendar>
         </ng-container>
     </div>
     <ng-template #loadingTemplate>

@@ -6,21 +6,17 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './persona-form.component.html',
   styleUrls: ['./persona-form.component.css']
 })
-export class PersonaFormComponent implements OnInit {
+export class PersonaFormComponent {
 
   @Input() formularioIn!: FormGroup;
   @Input() formularioConfig!: any[];
+  @Input() buttonActionMessage!: string;
 
   @Output() enviar = new EventEmitter<void>();
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.formularioIn);
-    console.log(this.formularioConfig)
-  }
-
   onSubmit() {
     this.enviar.emit();
-  } 
+  }
 }

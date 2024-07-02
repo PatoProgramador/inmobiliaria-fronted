@@ -22,6 +22,9 @@ export class AgendarCitaComponent implements OnInit {
   formularioCita!: FormGroup;
   loading: boolean = true;
   formularioConfig!: any[];
+  action: string = "agendar cita";
+  cita!: ICita;
+  isSubmited: boolean = false;
 
   constructor(private form: FormBuilder,
     private _appService: AppService,
@@ -56,7 +59,8 @@ export class AgendarCitaComponent implements OnInit {
     this._citaService.crearCita(idInmueble,idComercial,idComprador,idPropietario, cita).subscribe({
       next: (data: ICita) => {
         if (data) {
-          this.formSubmitted.emit();
+          this.cita = data;
+          this.isSubmited = true;
           alert("Cita agendada :)");
         } else {
           alert("Ocurrio un error")
@@ -66,6 +70,10 @@ export class AgendarCitaComponent implements OnInit {
       }
     })
 
+  }
+
+  onRegresar() {
+    this.formSubmitted.emit();
   }
 
 }
