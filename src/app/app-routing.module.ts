@@ -9,6 +9,7 @@ import { PersonaInmuebleComponent } from './pages/persona-inmueble/persona-inmue
 import { PublicarInmuebleComponent } from './pages/publicar-inmueble/publicar-inmueble.component';
 import { ListarPersonaComponent } from './pages/listar-persona/listar-persona.component';
 import { InmuebleDetallesComponent } from './pages/inmueble-detalles/inmueble-detalles.component';
+import { PagosPendientesComponent } from './pages/pagos-pendientes/pagos-pendientes.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'persona-inmuebles', component: PersonaInmuebleComponent},
   {path: 'publicar-inmueble', component: PublicarInmuebleComponent},
   {path: 'lista-personas', component: ListarPersonaComponent},
+  {path: 'pagos-pendientes', component: PagosPendientesComponent},
   {path: 'inmueble-detalles/:productId', component: InmuebleDetallesComponent},
   {path: '**', redirectTo:'home', pathMatch: 'full'}
 ];

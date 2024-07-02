@@ -18,6 +18,7 @@ export class PublicarInmuebleComponent implements OnInit {
   formularioConfig!:any[];
   logPersona?: IPersona;
   loading: boolean = true;
+  action: string = 'crear inmueble';
   imagenPar: string = 'assets/images/bedfb7dbe443427334f9da08d74b39f4.png';
   imagenImpar: string = 'assets/images/casa-los-simpsons.jpg';
 

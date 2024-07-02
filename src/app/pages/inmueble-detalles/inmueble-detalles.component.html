@@ -1,6 +1,6 @@
 <div *ngIf="!loading" class="container">
     <img [src]="inmueble.id % 2 === 0 ? imagenPar : imagenImpar" class="card-img-top" alt="{{inmueble.id}}">
-    <div *ngIf="!isCita && !isCompra && !isArriendo && !isEditar && !isAvaluo">
+    <div *ngIf="!isCita && !isCompra && !isArriendo && !isEditar && !isAvaluo && !isAnalisis">
         <h2>{{inmueble.direccion}}</h2>
         <h5>Detalles: <span>{{inmueble.detalles}}</span></h5>
         <h5>Propietario: <span>{{inmueble.propietario}}</span></h5>
@@ -9,7 +9,7 @@
             <ng-container *ngIf="isOwner">
                 <button class="btn btn-primary" (click)="onEditar()">Editar</button>
                 <button class="btn btn-primary" (click)="onAvaluo()">Generar avaluo</button>
-                <button class="btn btn-primary">Generar analisis de riesgo</button>
+                <button class="btn btn-primary" (click)="onAnalisis()">Generar analisis de riesgo</button>
             </ng-container>
             <ng-container *ngIf="!isOwner">
                 <button class="btn btn-primary" (click)="onCompra()">Comprar</button>
@@ -45,6 +45,11 @@
     <div *ngIf="!loading; else loadingTemplate">
         <ng-container *ngIf="isAvaluo">
             <app-generar-avaluo [inmueble]="inmueble" (formSubmitted)="onAvaluoSubmit()"></app-generar-avaluo>
+        </ng-container>
+    </div>
+    <div *ngIf="!loading; else loadingTemplate">
+        <ng-container *ngIf="isAnalisis">
+            <app-generar-analisis [inmueble]="inmueble" (formSubmitted)="onAnalisisSubmit()"></app-generar-analisis>
         </ng-container>
     </div>
     <ng-template #loadingTemplate>

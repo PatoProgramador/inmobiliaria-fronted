@@ -22,6 +22,8 @@ import { ComprarComponent } from './components/comprar/comprar.component';
 import { ArrendarComponent } from './components/arrendar/arrendar.component';
 import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inmueble.component';
 import { GenerarAvaluoComponent } from './components/generar-avaluo/generar-avaluo.component';
+import { GenerarAnalisisComponent } from './components/generar-analisis/generar-analisis.component';
+import { PagosPendientesComponent } from './pages/pagos-pendientes/pagos-pendientes.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { GenerarAvaluoComponent } from './components/generar-avaluo/generar-aval
     ComprarComponent,
     ArrendarComponent,
     EditarInmuebleComponent,
-    GenerarAvaluoComponent
+    GenerarAvaluoComponent,
+    GenerarAnalisisComponent,
+    PagosPendientesComponent
   ], 
   imports: [
     BrowserModule,

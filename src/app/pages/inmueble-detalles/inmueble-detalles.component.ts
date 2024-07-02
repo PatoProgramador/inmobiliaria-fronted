@@ -29,6 +29,7 @@ export class InmuebleDetallesComponent implements OnInit {
   isArriendo = false;
   isEditar = false;
   isAvaluo = false;
+  isAnalisis = false;
 
   constructor(private _inmuebleService: InmuebleService,
     private _route: ActivatedRoute,
@@ -76,6 +77,15 @@ export class InmuebleDetallesComponent implements OnInit {
   onAvaluoSubmit(): void {
     this.loadInmuebleData(this.inmueble.id);
     this.isAvaluo = false;
+  }
+  // modal de analisis
+  onAnalisis(): void {
+    this.isAnalisis = true;
+  }
+
+  onAnalisisSubmit(): void {
+    this.loadInmuebleData(this.inmueble.id);
+    this.isAnalisis = false;
   }
 
   

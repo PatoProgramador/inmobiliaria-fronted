@@ -18,6 +18,9 @@
           <li *ngIf="!esComercial && isAuthenticated" class="nav-item">
             <a class="nav-link" routerLink="persona-inmuebles">Tus inmuebles</a>
           </li>
+          <li *ngIf="!esComercial && isAuthenticated" class="nav-item">
+            <a class="nav-link" routerLink="pagos-pendientes">Pagos pendientes</a>
+          </li>
           <li *ngIf="esComercial" class="nav-item">
             <a class="nav-link" routerLink="lista-personas">Personas</a>
           </li>
