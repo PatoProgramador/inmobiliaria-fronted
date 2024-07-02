@@ -28,6 +28,7 @@ export class InmuebleDetallesComponent implements OnInit {
   isCompra = false;
   isArriendo = false;
   isEditar = false;
+  isAvaluo = false;
 
   constructor(private _inmuebleService: InmuebleService,
     private _route: ActivatedRoute,
@@ -66,6 +67,15 @@ export class InmuebleDetallesComponent implements OnInit {
   onEditarSubmit(): void {
     this.loadInmuebleData(this.inmueble.id);
     this.isEditar = false;
+  }
+  // modal de editar
+  onAvaluo(): void {
+    this.isAvaluo = true;
+  }
+  
+  onAvaluoSubmit(): void {
+    this.loadInmuebleData(this.inmueble.id);
+    this.isAvaluo = false;
   }
 
   
