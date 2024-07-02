@@ -27,6 +27,7 @@ export class InmuebleDetallesComponent implements OnInit {
   isCita = false;
   isCompra = false;
   isArriendo = false;
+  isEditar = false;
 
   constructor(private _inmuebleService: InmuebleService,
     private _route: ActivatedRoute,
@@ -54,10 +55,19 @@ export class InmuebleDetallesComponent implements OnInit {
   onArriendo(): void {
     this.isArriendo = true;
   }
-
   onArriendoSubmit(): void {
     this.isArriendo = false;
   }
+  // modal de editar
+  onEditar(): void {
+    this.isEditar = true;
+  }
+
+  onEditarSubmit(): void {
+    this.loadInmuebleData(this.inmueble.id);
+    this.isEditar = false;
+  }
+
   
   ngOnInit(): void {
     if (this._appService.getPersonaLog()) {

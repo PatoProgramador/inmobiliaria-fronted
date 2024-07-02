@@ -1,12 +1,16 @@
 <div *ngIf="!loading" class="container">
     <img [src]="inmueble.id % 2 === 0 ? imagenPar : imagenImpar" class="card-img-top" alt="{{inmueble.id}}">
-    <div *ngIf="!isCita && !isCompra && !isArriendo">
+    <div *ngIf="!isCita && !isCompra && !isArriendo && !isEditar">
         <h2>{{inmueble.direccion}}</h2>
         <h5>Detalles: <span>{{inmueble.detalles}}</span></h5>
         <h5>Propietario: <span>{{inmueble.propietario}}</span></h5>
         <h5>Precio: <span>{{inmueble.precio | currency}}</span></h5>
         <div *ngIf="isLoged">
-            <button *ngIf="isOwner" class="btn btn-primary">Editar</button>
+            <ng-container *ngIf="isOwner">
+                <button class="btn btn-primary" (click)="onEditar()">Editar</button>
+                <button class="btn btn-primary">Generar avaluo</button>
+                <button class="btn btn-primary">Generar analisis de riesgo</button>
+            </ng-container>
             <ng-container *ngIf="!isOwner">
                 <button class="btn btn-primary" (click)="onCompra()">Comprar</button>
                 <button class="btn btn-primary" (click)="onArriendo()">Arrendar</button>
@@ -31,6 +35,11 @@
     <div *ngIf="!loading; else loadingTemplate">
         <ng-container *ngIf="isArriendo">
             <app-arrendar [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onArriendoSubmit()"></app-arrendar>
+        </ng-container>
+    </div>
+    <div *ngIf="!loading; else loadingTemplate">
+        <ng-container *ngIf="isEditar">
+            <app-editar-inmueble [inmueble]="inmueble" (formSubmitted)="onEditarSubmit()"></app-editar-inmueble>
         </ng-container>
     </div>
     <ng-template #loadingTemplate>

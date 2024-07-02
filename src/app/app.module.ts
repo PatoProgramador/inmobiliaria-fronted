@@ -20,6 +20,8 @@ import { InmuebleDetallesComponent } from './pages/inmueble-detalles/inmueble-de
 import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
 import { ComprarComponent } from './components/comprar/comprar.component';
 import { ArrendarComponent } from './components/arrendar/arrendar.component';
+import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inmueble.component';
+import { GenerarAvaluoComponent } from './components/generar-avaluo/generar-avaluo.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ArrendarComponent } from './components/arrendar/arrendar.component';
     InmuebleDetallesComponent,
     AgendarCitaComponent,
     ComprarComponent,
-    ArrendarComponent
+    ArrendarComponent,
+    EditarInmuebleComponent,
+    GenerarAvaluoComponent
   ], 
   imports: [
     BrowserModule,

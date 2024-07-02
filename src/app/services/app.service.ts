@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IPersona } from '../models/persona.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IInmueble } from '../models/inmueble.model';
 
 @Injectable({
   providedIn: 'root'

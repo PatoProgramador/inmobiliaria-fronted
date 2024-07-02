@@ -34,4 +34,8 @@ export class InmuebleService {
     return this._httpClient.post<IInmueble>(`${this.baseURL}/crearInmueble/persona/${idPersona}`, inmueble)
   }
 
+  public editarInmueble(idInmueble: number, idPersona: number, inmuebleInput: IInmuebleInput): Observable<IInmueble> {
+    return this._httpClient.put<IInmueble>(`${this.baseURL}/modificarInmueble/${idInmueble}/persona/${idPersona}`, inmuebleInput)
+  }
+
 }
