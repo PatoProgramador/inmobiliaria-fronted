@@ -49,7 +49,6 @@ export class ArrendarComponent {
   }
 
   onEnviar(): void {
-    console.log(this.formularioArriendo)
     const idInmueble: number = Number(this.inmueble.id);
     const idComercial: number = Number(this.formularioArriendo.value.comercial);
     const idPropietario: number = Number(this.propietario.id);

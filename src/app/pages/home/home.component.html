@@ -1,6 +1,8 @@
-<div class="container">
+<div class="containerp">
     <h1>Selecciona la ciudad</h1>
-    <div *ngFor="let ciudad of ciudadList">
-        <button (click)="setearCiudad(ciudad.clave)" type="button" class="btn btn-dark" routerLink="/inmuebles">{{ciudad.descripcion}}</button>
+    <div class="ciudad-list">
+        <div *ngFor="let ciudad of ciudadList">
+            <button (click)="setearCiudad(ciudad.clave)" type="button" class="btn btn-dark ciudad-card" routerLink="/inmuebles">{{ciudad.descripcion}}</button>
+        </div>
     </div>
 </div>
