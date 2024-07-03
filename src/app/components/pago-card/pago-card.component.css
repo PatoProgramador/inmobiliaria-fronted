@@ -1,0 +1,17 @@
+.card {
+    width: 300px;
+    height: 200px;
+}
+
+.card h5 {
+    color: rgba(216, 25, 168, 0.986);
+}
+
+.card span {
+    color: #000;
+}
+
+.card button {
+    background-color: rgba(216, 25, 168, 0.986);
+    width: 150px;  
+}
