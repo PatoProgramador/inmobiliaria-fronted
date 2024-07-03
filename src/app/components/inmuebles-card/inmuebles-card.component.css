@@ -1,0 +1,19 @@
+.card {
+    width: 500px;
+    height: 410px;
+    box-shadow: -10px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h5 {
+    font-size: 30px;
+    color: rgba(216, 25, 168, 0.986);
+    font-weight: bold;
+}
+
+.redir {
+    background-color: rgba(216, 25, 168, 0.986);
+}
+
+.card-img-top {
+    height: 240px;
+}

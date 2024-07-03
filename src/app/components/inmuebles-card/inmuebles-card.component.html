@@ -1,8 +1,10 @@
-<div class="card" style="width: 18rem">
+<div class="card">
     <img [src]="product.id % 2 === 0 ? imagenPar : imagenImpar" class="card-img-top" alt="{{product.id}}" />
     <div class="card-body">
       <h5 class="card-title">{{product.direccion}}</h5>
       <p class="card-text">{{product.detalles}}</p>
-      <a href="#" class="btn btn-primary" [routerLink]="['/inmueble-detalles', product.id]">Más detalles</a>
+      <div class="d-button">
+        <a href="#" class="btn btn-primary redir" [routerLink]="['/inmueble-detalles', product.id]">Más detalles</a>
+      </div>
     </div>
 </div>
