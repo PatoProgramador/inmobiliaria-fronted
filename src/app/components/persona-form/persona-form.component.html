@@ -1,5 +1,5 @@
 <div class="input-group flex-nowrap">
-    <form [formGroup]="formularioIn" (ngSubmit)="onSubmit()">
+    <form class="form-in" [formGroup]="formularioIn" (ngSubmit)="onSubmit()">
         <ng-container *ngFor="let field of formularioConfig">
             <div *ngIf="field.controlType === 'input'" class="mb-3">
                 <label [for]="field.formControlName" class="form-label">{{field.label}}</label>

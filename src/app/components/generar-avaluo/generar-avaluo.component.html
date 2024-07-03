@@ -1,4 +1,8 @@
 <ng-container>
-    <app-persona-form [buttonActionMessage]="action" [buttonActionMessage]="action" [formularioIn]="formularioCrearAvaluo" [formularioConfig]="formularioConfig" (enviar)="onEnviar()"></app-persona-form>
-    <button class="btn btn-primary" (click)="onRegresar()">regresar</button>
+    <section class="avaluo-form">
+        <div class="principal">
+            <app-persona-form [buttonActionMessage]="action" [buttonActionMessage]="action" [formularioIn]="formularioCrearAvaluo" [formularioConfig]="formularioConfig" (enviar)="onEnviar()"></app-persona-form>
+        </div>
+        <button class="btn btn-primary" (click)="onRegresar()">regresar</button>
+    </section>
 </ng-container>

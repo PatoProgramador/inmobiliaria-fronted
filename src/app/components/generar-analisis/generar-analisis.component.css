@@ -1,0 +1,17 @@
+.analisis-form {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.analisis-form button {
+    background-color: rgba(216, 25, 168, 0.986);
+    font-size: 18px;
+    width: 100px;
+}
+
+.principal {
+    height: 75%;
+}
