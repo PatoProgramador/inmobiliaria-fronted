@@ -41,9 +41,9 @@ export class ArrendarComponent {
 
     this.formularioConfig = [
       { label: 'Fecha de inicio', formControlName: 'fecha_inicio', type: 'date', controlType: 'input' },
-      { label: 'Fecha final (puedes dejarlo vacio si no hay fecha final)', formControlName: 'fecha_final', type: 'date', controlType: 'input' },
+      { label: 'Fecha final (opcional)', formControlName: 'fecha_final', type: 'date', controlType: 'input' },
       { label: 'Descripción', placeholder: 'Arriendo pactado con posibilidad de modificar x fecha....', type: 'text', formControlName: 'descripcion', controlType: 'textarea' },
-      { label: 'Pago mensual (5% del valor del inmueble)', formControlName: 'monto', type: 'text', controlType: 'input' },
+      { label: 'Pago mensual (5%)', formControlName: 'monto', type: 'text', controlType: 'input' },
       { label: 'Comercial encargado', formControlName: 'comercial', options: this.comerciales, controlType: 'select' },
     ];
   }

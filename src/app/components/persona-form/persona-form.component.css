@@ -19,6 +19,10 @@
     width: 500px;
 }
 
+.form-in select {
+    width: 500px;
+}
+
 .form-in button {
     background-color: rgba(216, 25, 168, 0.986);
     font-size: 18px;

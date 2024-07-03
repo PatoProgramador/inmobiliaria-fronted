@@ -2,12 +2,11 @@
     background: url('/assets/images/towers5.jpg');
     background-size: cover;
     width: 100%;
-    height: 827px;
+    height: 1000px;
     color:  white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
 }
 
 .containeri {
@@ -22,7 +21,7 @@
 .i-detail-c {
     background-color: white;
     width: 600px;
-    height: 600px;
+    height: 787.9px;
     color: #000;
     border-top-right-radius: 30px;
     padding: 25px;

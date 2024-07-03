@@ -1,0 +1,45 @@
+.arrendar-form {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrendar-form label {
+    font-size: 18px;
+}
+
+.arrendar-form button {
+    background-color: rgba(216, 25, 168, 0.986);
+    font-size: 18px;
+    width: 100px;
+}
+
+.principal {
+    padding-bottom: 10px;
+}
+
+.resumen-form {
+    height: 75%;
+}
+
+.resumen-form h2 {
+    font-size: 30px;
+    color: rgba(216, 25, 168, 0.986);
+}
+
+.resumen-form h3 {
+    font-size: 20px;
+    color: rgba(216, 25, 168, 0.986);
+}
+
+.resumen-form span {
+    font-size: 20px;
+    color: black;
+}
+
+.resumen-form br {
+    width: 60%;
+    border: none;
+    border-top: 1px solid #ccc; 
+}

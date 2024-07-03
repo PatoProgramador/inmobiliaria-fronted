@@ -1,19 +1,27 @@
-<h3>{{inmueble.direccion}}</h3>
 <ng-container *ngIf="!isSubmited">
-    <app-persona-form [buttonActionMessage]="action" [formularioIn]="formularioCita" [formularioConfig]="formularioConfig" (enviar)="onEnviar()"></app-persona-form>
-    <button class="btn btn-primary" (click)="onRegresar()">Regresar</button>
+    <section class="cita-form">
+        <div class="principal">
+            <app-persona-form [buttonActionMessage]="action" [formularioIn]="formularioCita" [formularioConfig]="formularioConfig" (enviar)="onEnviar()"></app-persona-form>
+        </div>
+        <button class="btn btn-primary" (click)="onRegresar()">Regresar</button>
+    </section>
 </ng-container>
-<ng-container *ngIf="isSubmited">
-    <h2>Resumen de tu cita agendada</h2>
-    <h3>fecha: {{cita.fecha_de_cita | date: "mediumDate" }}</h3>
-    <h3>Direccion: {{cita.dirrecion_inmueble}}</h3>
-    <h2>Contacto del propietario</h2>
-    <h3>Nombre: {{cita.propietario}}</h3>
-    <h3>Correo: {{cita.correo_propietario}}</h3>
-    <h3>Telefono: {{cita.telefono_propietario}}</h3>
-    <h2>Contacto del comercial encargado</h2>
-    <h3>Comercial: {{cita.comercial}}</h3>
-    <h3>Correo: {{cita.correo_comercial}}</h3>
-    <h3>Telefono: {{cita.telefono_comercial}}</h3>
+<section class="cita-form" *ngIf="isSubmited">
+    <div class="resumen-form">
+        <h2>Resumen de tu cita agendada</h2>
+        <br>
+        <h3>fecha: <span>{{cita.fecha_de_cita | date: "mediumDate" }}</span></h3>
+        <h3>Direccion: <span>{{cita.dirrecion_inmueble}}</span></h3>
+        <br>
+        <h2>Contacto del propietario</h2>
+        <h3>Nombre: <span>{{cita.propietario}}</span></h3>
+        <h3>Correo: <span>{{cita.correo_propietario}}</span></h3>
+        <h3>Telefono: <span>{{cita.telefono_propietario}}</span></h3>
+        <br>
+        <h2>Contacto del comercial encargado</h2>
+        <h3>Comercial: <span>{{cita.comercial}}</span></h3>
+        <h3>Correo: <span>{{cita.correo_comercial}}</span></h3>
+        <h3>Telefono: <span>{{cita.telefono_comercial}}</span></h3>
+    </div>
     <button class="btn btn-primary" (click)="onRegresar()">Regresar</button>
-</ng-container>
+</section>

@@ -30,19 +30,19 @@
             </section>
         </div>
         <div *ngIf="!loading; else loadingTemplate">
-            <ng-container *ngIf="isCita">
+            <div class="i-detail-c" *ngIf="isCita">
                 <app-agendar-cita [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onFormSubmitted()"></app-agendar-cita>
-            </ng-container>
+            </div>
         </div>
         <div *ngIf="!loading; else loadingTemplate">
-            <ng-container *ngIf="isCompra">
+            <div class="i-detail-c" *ngIf="isCompra">
                 <app-comprar [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onCompraSubmit()"></app-comprar>
-            </ng-container>
+            </div>
         </div>
         <div *ngIf="!loading; else loadingTemplate">
-            <ng-container *ngIf="isArriendo">
+            <div class="i-detail-c" *ngIf="isArriendo">
                 <app-arrendar [comerciales]="comerciales" [inmueble]="inmueble" [propietario]="propietario" (formSubmitted)="onArriendoSubmit()"></app-arrendar>
-            </ng-container>
+            </div>
         </div>
         <div *ngIf="!loading; else loadingTemplate">
             <div class="i-detail-c" *ngIf="isEditar">
